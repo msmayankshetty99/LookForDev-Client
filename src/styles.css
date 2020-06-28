@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+body
+{
+    background: #1d2125;  /* fallback for old browsers */
+    font-family: sans-serif;
+    margin: 0;
+    color:#fff;
+}
+a {
+    color: #fff;
+    text-decoration: none;
+}
+  
+a:hover {
+    opacity: 0.8;
+}
