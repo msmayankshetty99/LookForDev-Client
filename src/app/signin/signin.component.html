@@ -3,7 +3,7 @@
         <mat-tab label="Sign In">
             <div class = "grid-col-2">
                 <p class = "heading" align="center">Sign In</p>
-                <form [formGroup] = "loginForm">
+                <form [formGroup] = "loginForm" class="form">
                     <div class = "input">
                         <label>EMAIL</label>
                         <input type = "text" formControlName = "email" class = "textbox" [ngClass]="{'is-invalid': logSubmitted && loginForm.controls.email.errors}"/>
@@ -27,7 +27,7 @@
         <mat-tab label="Sign Up">
             <div class = "grid-col-2">
                 <p class = "heading" align="center">Sign Up</p>
-                <form [formGroup] = "registerForm">
+                <form [formGroup] = "registerForm" class ="form">
                     <div class = "input">
                         <label>NAME</label>
                         <input type = "text" formControlName = "name" class = "textbox" [ngClass]="{'is-invalid': regSubmitted && registerForm.controls.name.errors}"/>
@@ -71,10 +71,70 @@
                         <input type="radio" value="1" formControlName="role" style = "margin-left:30px;"> Company
                     </div>
                     <div *ngIf="registerForm.controls.role.value == '0'">
-                        <p> Developer form displayed </p>
+                        <!-- <p> Dev form displayed </p> -->
+                        <form [formGroup] = "devForm">
+                            <div class = "input">
+                                <label>DESCRIPTION</label>
+                                <input type = "text" class = "textbox" formControlName = "des" [ngClass]="{'is-invalid': regSubmitted && devForm.controls.des.errors}"/>
+                                 <span *ngIf = "regSubmitted && devForm.controls.des.errors">
+                                   Required!
+                                </span> 
+                            </div>
+                            <div class = "input">
+                                <label>ACHIEVEMENTS</label>
+                                <input type = "text" class = "textbox" formControlName = "achievement" [ngClass]="{'is-invalid': regSubmitted && devForm.controls.achievement.errors}"/>
+                                <span *ngIf = "regSubmitted && devForm.controls.achievement.errors">
+                                    Required!
+                                 </span> 
+                            </div> 
+                            <div class = "input">
+                                <label>EXPERIENCE</label>
+                                <input type = "text" class = "textbox" formControlName = "experience" [ngClass]="{'is-invalid': regSubmitted && devForm.controls.experience.errors}"/>
+                                <span *ngIf = "regSubmitted && devForm.controls.experience.errors">
+                                    Required!
+                                 </span> 
+                            </div> 
+                            <div class = "input">
+                                <label>LINKEDIN</label>
+                                <input type = "text" class = "textbox" formControlName = "linkedin"/>
+                                 <!-- <span *ngIf = "regSubmitted && registerForm.controls.repassword.invalid && registerForm.controls.repassword.errors">
+                                   Required!
+                                </span>  -->
+                            </div> 
+                            <div class = "input">
+                                <label>FACEBOOK</label>
+                                <input type = "text" class = "textbox" formControlName = "facebook"/>
+                                 <!-- <span *ngIf = "regSubmitted && registerForm.controls.repassword.invalid && registerForm.controls.repassword.errors">
+                                   Required!
+                                </span>  -->
+                            </div> 
+                            <div class = "input">
+                                <label>TWITTER</label>
+                                <input type = "text" class = "textbox" formControlName = "twitter"/>
+                                 <!-- <span *ngIf = "regSubmitted && registerForm.controls.repassword.invalid && registerForm.controls.repassword.errors">
+                                   Required!
+                                </span>  -->
+                            </div>                                                                        
+                        </form>
                     </div>
                     <div *ngIf="registerForm.controls.role.value == '1'">
-                        <p> Company form displayed </p>
+                        <!-- <p> Company form displayed </p> -->
+                        <form [formGroup] = "compForm">
+                            <div class = "input">
+                                <div class = "input">
+                                    <label>COMPANY NAME</label>
+                                    <input type = "text" class = "textbox" formControlName = "comp_name" [ngClass]="{'is-invalid': regSubmitted && compForm.controls.comp_name.errors}"/>
+                                    <span *ngIf = "regSubmitted && compForm.controls.comp_name.errors">
+                                        Required!
+                                     </span> 
+                                </div>     
+                                <label>DESCRIPTION</label>
+                                <input type = "text" class = "textbox" formControlName = "des" [ngClass]="{'is-invalid': regSubmitted && compForm.controls.des.errors}"/>
+                                <span *ngIf = "regSubmitted && compForm.controls.des.errors">
+                                    Required!
+                                 </span> 
+                            </div>                                                                   
+                        </form>
                     </div>
                     <div class="d-flex justify-content-end">
                         <button (click)="onRegister()" class="btn">REGISTER</button>

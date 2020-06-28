@@ -32,7 +32,7 @@
 {
    opacity: 0.6;
 }
-form{
+.form{
     width:70%;
     margin: 0 auto;
 }
@@ -58,7 +58,7 @@ label
 }
 .is-invalid
 {
-    border: 2px  #ff416c solid !important;
+    border: 2px  #ff464d solid !important;
 }
 .input
 {

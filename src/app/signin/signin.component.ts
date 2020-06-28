@@ -13,6 +13,8 @@ export class SigninComponent implements OnInit {
 
   registerForm: FormGroup;
   loginForm: FormGroup;
+  devForm: FormGroup;
+  compForm: FormGroup;
   regSubmitted = false;
   logSubmitted = false;
 
@@ -33,9 +35,21 @@ export class SigninComponent implements OnInit {
         role:['']
     });
     this.loginForm = this.formBuilder.group({
-      email:['',[Validators.required,Validators.email]],
-      password:['',[Validators.required,Validators.minLength(8)]]
-  });
+        email:['',[Validators.required,Validators.email]],
+        password:['',[Validators.required,Validators.minLength(8)]]
+    });
+    this.devForm = this.formBuilder.group({
+        des:['',Validators.required],
+        achievement:['',Validators.required],
+        experience:['',Validators.required],
+        linkedin:[''],
+        facebook:[''],
+        twitter:['']
+    });
+    this.compForm = this.formBuilder.group({
+      comp_name:['',Validators.required],
+      des:['',Validators.required],
+    });
   }
   onRegister(){
     var data = { 
