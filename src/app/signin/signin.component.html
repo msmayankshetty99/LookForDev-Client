@@ -1,76 +1,86 @@
 <div class="fullwidth">
-    <div class = "grid-col-2" >
-        <p class = "heading" align="center">Sign In</p>
-        <form [formGroup] = "loginForm">
-            <div class = "input">
-                <label>EMAIL</label>
-                <input type = "text" formControlName = "email" class = "textbox" [ngClass]="{'is-invalid': logSubmitted && loginForm.controls.email.errors}"/>
-                <span *ngIf = "logSubmitted && loginForm.controls.email.errors">
-                   Required!
-                </span>
+    <mat-tab-group dynamicHeight>
+        <mat-tab label="Sign In">
+            <div class = "grid-col-2">
+                <p class = "heading" align="center">Sign In</p>
+                <form [formGroup] = "loginForm">
+                    <div class = "input">
+                        <label>EMAIL</label>
+                        <input type = "text" formControlName = "email" class = "textbox" [ngClass]="{'is-invalid': logSubmitted && loginForm.controls.email.errors}"/>
+                        <span *ngIf = "logSubmitted && loginForm.controls.email.errors">
+                        Required!
+                        </span>
+                    </div>
+                    <div class = "input">
+                        <label>PASSWORD</label>
+                        <input type = "password" formControlName = "password" class = "textbox" [ngClass]="{'is-invalid': logSubmitted && loginForm.controls.password.errors}"/>
+                        <span *ngIf = "logSubmitted && loginForm.controls.password.errors">
+                        Required!
+                        </span>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button (click)="onLogin()" class="btn">LOGIN</button>
+                    </div>
+                </form> 
             </div>
-            <div class = "input">
-                <label>PASSWORD</label>
-                <input type = "password" formControlName = "password" class = "textbox" [ngClass]="{'is-invalid': logSubmitted && loginForm.controls.password.errors}"/>
-                <span *ngIf = "logSubmitted && loginForm.controls.password.errors">
-                   Required!
-                </span>
+        </mat-tab>
+        <mat-tab label="Sign Up">
+            <div class = "grid-col-2">
+                <p class = "heading" align="center">Sign Up</p>
+                <form [formGroup] = "registerForm">
+                    <div class = "input">
+                        <label>NAME</label>
+                        <input type = "text" formControlName = "name" class = "textbox" [ngClass]="{'is-invalid': regSubmitted && registerForm.controls.name.errors}"/>
+                        <span *ngIf = "regSubmitted && registerForm.controls.name.errors">
+                        Required!
+                        </span>
+                    </div>
+                    <div class = "input">
+                        <label>EMAIL</label>
+                        <input type = "text" formControlName = "email" class = "textbox" [ngClass]="{'is-invalid': regSubmitted && registerForm.controls.email.errors}"/>
+                        <span *ngIf = "regSubmitted && registerForm.controls.email.errors">
+                        Required!
+                        </span>
+                    </div>
+                    <div class = "input">
+                        <label>PASSWORD</label>
+                        <input type = "password" formControlName = "password" class = "textbox" [ngClass]="{'is-invalid': regSubmitted && registerForm.controls.password.errors}"/>
+                        <span *ngIf = "regSubmitted && registerForm.controls.password.errors">
+                        Required!
+                        </span>
+                    </div>
+                    <div class = "input">
+                        <label>RE-TYPE PASSWORD</label>
+                        <input type = "password" formControlName = "repassword" class = "textbox" [ngClass]="{'is-invalid': regSubmitted && registerForm.controls.repassword.errors}"/>
+                        <span *ngIf = "regSubmitted && registerForm.controls.repassword.invalid && registerForm.controls.repassword.errors">
+                        Required!
+                        </span>
+                    </div>
+                    <div class = "input">
+                        <label>DATE OF BIRTH</label><br>
+                        <input type="date" id="birthday" formControlName="dob" class="textbox"><br>
+                    </div>
+                    <div class = "input">
+                        <label> GENDER</label><br>
+                        <input type="radio" value="Male" formControlName="gender" checked> Male
+                        <input type="radio" value="Female" formControlName="gender" style = "margin-left:30px;"> Female
+                    </div>
+                    <div class = "input">
+                        <label> REGISTER AS</label><br>
+                        <input type="radio" value="0" formControlName="role"> Developer 
+                        <input type="radio" value="1" formControlName="role" style = "margin-left:30px;"> Company
+                    </div>
+                    <div *ngIf="registerForm.controls.role.value == '0'">
+                        <p> Developer form displayed </p>
+                    </div>
+                    <div *ngIf="registerForm.controls.role.value == '1'">
+                        <p> Company form displayed </p>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button (click)="onRegister()" class="btn">REGISTER</button>
+                    </div>
+                </form>
             </div>
-            <button (click)="onLogin()" class="btn">LOGIN</button>
-        </form> 
-    </div>
-    <div class = "grid-col-2">
-        <p class = "heading" align="center">Sign Up</p>
-        <form [formGroup] = "registerForm">
-            <div class = "input">
-                <label>NAME</label>
-                <input type = "text" formControlName = "name" class = "textbox" [ngClass]="{'is-invalid': regSubmitted && registerForm.controls.name.errors}"/>
-                <span *ngIf = "regSubmitted && registerForm.controls.name.errors">
-                   Required!
-                </span>
-            </div>
-            <div class = "input">
-                <label>EMAIL</label>
-                <input type = "text" formControlName = "email" class = "textbox" [ngClass]="{'is-invalid': regSubmitted && registerForm.controls.email.errors}"/>
-                <span *ngIf = "regSubmitted && registerForm.controls.email.errors">
-                   Required!
-                </span>
-            </div>
-            <div class = "input">
-                <label>PASSWORD</label>
-                <input type = "password" formControlName = "password" class = "textbox" [ngClass]="{'is-invalid': regSubmitted && registerForm.controls.password.errors}"/>
-                <span *ngIf = "regSubmitted && registerForm.controls.password.errors">
-                   Required!
-                </span>
-            </div>
-            <div class = "input">
-                <label>RE-TYPE PASSWORD</label>
-                <input type = "password" formControlName = "repassword" class = "textbox" [ngClass]="{'is-invalid': regSubmitted && registerForm.controls.repassword.errors}"/>
-                <span *ngIf = "regSubmitted && registerForm.controls.repassword.invalid && registerForm.controls.repassword.errors">
-                   Required!
-                </span>
-            </div>
-            <div class = "input">
-                <label>DATE OF BIRTH</label><br>
-                <input type="date" id="birthday" formControlName="dob" class="textbox"><br>
-            </div>
-            <div class = "input">
-                <label> GENDER</label><br>
-                <input type="radio" value="Male" formControlName="gender" checked> Male
-                <input type="radio" value="Female" formControlName="gender" style = "margin-left:30px;"> Female
-            </div>
-            <div class = "input">
-                <label> REGISTER AS</label><br>
-                <input type="radio" value="0" formControlName="role"> Developer 
-                <input type="radio" value="1" formControlName="role" style = "margin-left:30px;"> Company
-            </div>
-            <div *ngIf="registerForm.controls.role.value == '0'">
-                <p> Developer form displayed </p>
-            </div>
-            <div *ngIf="registerForm.controls.role.value == '1'">
-                <p> Company form displayed </p>
-            </div>
-            <button (click)="onRegister()" class="btn">REGISTER</button>
-        </form>
-    </div>
+        </mat-tab>
+    </mat-tab-group>
 </div>

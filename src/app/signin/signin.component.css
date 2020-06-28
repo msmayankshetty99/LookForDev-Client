@@ -7,27 +7,26 @@
 .grid-col-2
 {
 	display:inline-block;
-	width:35%;
-	margin:2% 7.5%;
+	width:36%;
+	margin:2% 32%;
     vertical-align:top;  
     background: #2f363d;  /* fallback for old browsers */
     
 }
 .heading
 {
-    margin:16px auto;
-    font-size: 32px;
-    padding-bottom: 5px;
+    margin:6% auto;
+    font-size:32px;
 }
 .btn
 {
     color: #2f363d;
     background:#fff;
     width:150px;
-    height: 40px;
-    margin:20px 0px 20px 0px;
+    height:40px;
+    margin:5% 0% 10% 0%;
     border:2px solid #fff;
-    font-size: 20px;
+    font-size:20px;
 }
 .btn:hover
 {
@@ -64,4 +63,8 @@ label
 .input
 {
     margin-bottom: 10px;
+}
+.mat-tab-label, .mat-tab-link 
+{
+    color:#fff !important;
 }

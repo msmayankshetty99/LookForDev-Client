@@ -6,7 +6,9 @@ body
     margin: 0;
     color:#fff;
 }
-a {
+
+a 
+{
     color: #fff;
     text-decoration: none;
 }
@@ -14,3 +16,15 @@ a {
 a:hover {
     opacity: 0.8;
 }
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    height: 6%;
+} 
+
+.mat-tab-label, .mat-tab-link {
+    color: #fff;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
