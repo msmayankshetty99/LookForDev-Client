@@ -52,7 +52,7 @@ export class SigninComponent implements OnInit {
     });
   }
   onRegister(){
-    var data = { 
+    var userdata = { 
       email: this.registerForm.value.email,
       password: this.registerForm.value.password,
       full_name: this.registerForm.value.name,
@@ -60,14 +60,55 @@ export class SigninComponent implements OnInit {
       role: this.registerForm.value.role,
       dob: this.registerForm.value.dob,
     }
+
+   
+
+    var compdata = {
+
+
+    }
+
     this.regSubmitted = true;
     console.log('Register button clicked');
     console.log('Value', this.registerForm.value);
-    this.api.registerUsers(data).subscribe(response => {
+    //basic user registration
+    this.api.registerUsers(userdata).subscribe(response => {
       console.log('Response', response);
-      //dev or comp here
+      //check for role
+      if(response.data.role == "0")
+      {
+        //Dev Regisrtatiom
+        var devdata = {
+          user_id: response.data.id,
+          des: this.devForm.value.des,
+          achievement: this.devForm.value.achievement,
+          experience: this.devForm.value.experience,
+          linkedin_link: this.devForm.value.linkedin,
+          twitter_link: this.devForm.value.twitter,
+          facebook_link: this.devForm.value.facebook,
+        }
+        this.api.registerDev(devdata).subscribe(response => {
+          console.log('Response', response);
+        }, error => {
+          console.log('Error', error);
+        });
+      }
+      else
+      {
+        //Comp registration
+        var compdata = {
+          user_id: response.data.id,
+          comp_name:this.compForm.value.comp_name,
+          des: this.compForm.value.des,
+        }
+        this.api.registerComp(compdata).subscribe(response => {
+          console.log('Response', response);
+        }, error => {
+          console.log('Error', error);
+        });
+      }
     }, error => {
-      console.log('Error', error);
+      console.log('Errors', error);
     });
   }
   onLogin(){

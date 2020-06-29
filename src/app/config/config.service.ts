@@ -25,7 +25,33 @@ export class ConfigService {
        {
           return err;
        }
-      
-      //return this.http.get('http://localhost:5000/');
   }
+  registerDev(data) {
+    var header = new HttpHeaders({
+       'Content-Type': 'application/json', 
+       'Access-Control-Allow-Origin' :  '*' }
+       );
+       try
+       {
+          return this.http.post('http://localhost:5000/dev', data);
+       }
+       catch(err)
+       {
+          return err;
+       }
+  }
+  registerComp(data) {
+   var header = new HttpHeaders({
+      'Content-Type': 'application/json', 
+      'Access-Control-Allow-Origin' :  '*' }
+      );
+      try
+      {
+         return this.http.post('http://localhost:5000/comp', data);
+      }
+      catch(err)
+      {
+         return err;
+      }
+ }
 }
