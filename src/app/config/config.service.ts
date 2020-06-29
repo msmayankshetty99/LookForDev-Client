@@ -17,7 +17,15 @@ export class ConfigService {
        'Content-Type': 'application/json', 
        'Access-Control-Allow-Origin' :  '*' }
        );
-      //  return this.http.post('localhost:5000/register', data, { headers: header });
-      return this.http.get('localhost:5000/');
+       try
+       {
+          return this.http.post('http://localhost:5000/register', data);
+       }
+       catch(err)
+       {
+          return err;
+       }
+      
+      //return this.http.get('http://localhost:5000/');
   }
 }
