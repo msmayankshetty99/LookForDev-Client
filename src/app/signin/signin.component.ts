@@ -61,20 +61,13 @@ export class SigninComponent implements OnInit {
       dob: this.registerForm.value.dob,
     }
 
-   
-
-    var compdata = {
-
-
-    }
-
     this.regSubmitted = true;
     console.log('Register button clicked');
     console.log('Value', this.registerForm.value);
-    //basic user registration
+    //Basic User Registration
     this.api.registerUsers(userdata).subscribe(response => {
       console.log('Response', response);
-      //check for role
+      //Check For Role
       if(response.data.role == "0")
       {
         //Dev Regisrtatiom
@@ -111,7 +104,11 @@ export class SigninComponent implements OnInit {
       console.log('Errors', error);
     });
   }
-  onLogin(){
+  onLogin() {
+    var logindata = {
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password,
+    }
     this.logSubmitted = true;
     console.log('Login button clicked');
   }

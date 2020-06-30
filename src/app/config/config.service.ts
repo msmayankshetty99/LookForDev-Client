@@ -12,6 +12,21 @@ export class ConfigService {
   constructor(private http: HttpClient) { 
   }
 
+  loginUsers(data) {
+     var header = new HttpHeaders({
+      'Content-Type': 'application/json', 
+      'Access-Control-Allow-Origin' :  '*' }
+     );
+      try
+      {
+         return this.http.post('http://localhost:5000/login', data);
+      }
+      catch(err)
+      {
+         return err;
+      }
+  }
+
   registerUsers(data) {
     var header = new HttpHeaders({
        'Content-Type': 'application/json', 
