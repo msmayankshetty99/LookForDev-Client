@@ -104,12 +104,20 @@ export class SigninComponent implements OnInit {
       console.log('Errors', error);
     });
   }
+
+  //Login Component
   onLogin() {
     var logindata = {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
     }
+    
     this.logSubmitted = true;
+    this.api.loginUsers(logindata).subscribe(response => {
+      console.log('Response', response);
+    }, error => {
+      console.log('Error', error);
+    });
     console.log('Login button clicked');
   }
 }
