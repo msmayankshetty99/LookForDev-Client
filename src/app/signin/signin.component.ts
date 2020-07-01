@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { passValidator } from './validator';
 import { ConfigService } from '../config/config.service';
+import { AuthenticationService } from '../services/auth.services';
 
 @Component({
   selector: 'app-signin',
@@ -21,6 +22,7 @@ export class SigninComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
+    private auth: AuthenticationService,
     private api: ConfigService,
   ) { }
 
@@ -82,8 +84,10 @@ export class SigninComponent implements OnInit {
         }
         this.api.registerDev(devdata).subscribe(response => {
           console.log('Response', response);
+          alert('Successfully Registered!');
         }, error => {
           console.log('Error', error);
+          alert('Error Encountered. Please try again.');
         });
       }
       else
@@ -96,8 +100,10 @@ export class SigninComponent implements OnInit {
         }
         this.api.registerComp(compdata).subscribe(response => {
           console.log('Response', response);
+          alert('Successfully Registered!');
         }, error => {
           console.log('Error', error);
+          alert('Error Encountered. Please try again.');
         });
       }
     }, error => {
@@ -107,17 +113,23 @@ export class SigninComponent implements OnInit {
 
   //Login Component
   onLogin() {
-    var logindata = {
-      email: this.loginForm.value.email,
-      password: this.loginForm.value.password,
-    }
-    
-    this.logSubmitted = true;
-    this.api.loginUsers(logindata).subscribe(response => {
-      console.log('Response', response);
-    }, error => {
-      console.log('Error', error);
-    });
-    console.log('Login button clicked');
+    // var logindata = {
+    //   email: this.loginForm.value.email,
+    //   password: this.loginForm.value.password,
+    // }
+
+    this.auth.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(
+      data => {
+        console.log('Login Successful!');
+      }
+    );
+  
+    // this.logSubmitted = true;
+    // this.api.loginUsers(logindata).subscribe(response => {
+    //   console.log('Response', response);
+    // }, error => {
+    //   console.log('Error', error);
+    // });
+    // console.log('Login button clicked');
   }
 }
