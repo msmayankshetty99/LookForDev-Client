@@ -20,10 +20,10 @@ export class SigninComponent implements OnInit {
   logSubmitted = false;
 
   constructor(
-    private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private auth: AuthenticationService,
     private api: ConfigService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -121,6 +121,7 @@ export class SigninComponent implements OnInit {
     this.auth.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(
       data => {
         console.log('Login Successful!');
+        this.router.navigate(['/home']);
       }
     );
   

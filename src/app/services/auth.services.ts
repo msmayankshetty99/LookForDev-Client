@@ -25,7 +25,8 @@ export class AuthenticationService {
         return this.http.post<any>(`http://localhost:5000/signin`, { email, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('user', JSON.stringify(user.data)); // keys will always be strings
+                localStorage.setItem('user', JSON.stringify(user.data.user)); 
+                localStorage.setItem('token', JSON.stringify(user.data.accessToken)); 
                 this.userSubject.next(user);
                 return user;
             }));
@@ -34,7 +35,8 @@ export class AuthenticationService {
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('user');
+        localStorage.removeItem('token');
         this.userSubject.next(null);
         this.router.navigate(['/signin']);
-    }
+    } 
 }
