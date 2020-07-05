@@ -27,20 +27,20 @@ export class ConfigService {
       }
   }
 
-  registerUsers(data) {
-    var header = new HttpHeaders({
-       'Content-Type': 'application/json', 
-       'Access-Control-Allow-Origin' :  '*' }
-       );
-       try
-       {
-          return this.http.post('http://localhost:5000/register', data);
-       }
-       catch(err)
-       {
-          return err;
-       }
-  }
+//   registerUsers(data) {
+//     var header = new HttpHeaders({
+//        'Content-Type': 'application/json', 
+//        'Access-Control-Allow-Origin' :  '*' }
+//        );
+//        try
+//        {
+//           return this.http.post('http://localhost:5000/register', data);
+//        }
+//        catch(err)
+//        {
+//           return err;
+//        }
+//   }
   registerDev(data) {
     var header = new HttpHeaders({
        'Content-Type': 'application/json', 
@@ -48,7 +48,7 @@ export class ConfigService {
        );
        try
        {
-          return this.http.post('http://localhost:5000/dev', data);
+          return this.http.post('http://localhost:5000/public/registerDev', data);
        }
        catch(err)
        {
@@ -62,7 +62,7 @@ export class ConfigService {
       );
       try
       {
-         return this.http.post('http://localhost:5000/comp', data);
+         return this.http.post('http://localhost:5000/public/registerComp', data);
       }
       catch(err)
       {
