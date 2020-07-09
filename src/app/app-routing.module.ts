@@ -10,8 +10,8 @@ import { Role } from './models/role'
 const routes: Routes = [
   { path:'signin', component: SigninComponent },
   { path:'home', component: HomeComponent },
-  { path: 'dev', component: DevComponent, canActivate: [AuthGuard], data: { roles: [Role.Dev] } },
-  { path: 'company', component: CompanyComponent, canActivate: [AuthGuard], data: { roles: [Role.Company] } },
+  { path:'dev', component: DevComponent, canActivate: [AuthGuard], data: { roles: [Role.Dev] } },
+  { path:'company', component: CompanyComponent, canActivate: [AuthGuard], data: { roles: [Role.Company] } },
   { path:'', redirectTo:'/home', pathMatch:'full' }
 ];
 

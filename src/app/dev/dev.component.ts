@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigService } from '../config/config.service';
 
 @Component({
   selector: 'app-dev',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dev.component.css']
 })
 export class DevComponent implements OnInit {
-
-  constructor() { }
+ 
+  constructor(
+    private api: ConfigService,
+  ) { }
 
   ngOnInit(): void {
-  }
 
+  }
 }

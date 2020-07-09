@@ -5,7 +5,11 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
@@ -22,7 +26,9 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatCardModule,
+    MatButtonModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
