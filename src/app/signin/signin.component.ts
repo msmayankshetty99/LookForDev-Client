@@ -117,7 +117,7 @@ export class SigninComponent implements OnInit {
     //   email: this.loginForm.value.email,
     //   password: this.loginForm.value.password,
     // }
-
+    this.logSubmitted = true;
     this.auth.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(
       data => {
         console.log('Login Successful!');
@@ -125,7 +125,7 @@ export class SigninComponent implements OnInit {
       }
     );
   
-    // this.logSubmitted = true;
+    // 
     // this.api.loginUsers(logindata).subscribe(response => {
     //   console.log('Response', response);
     // }, error => {

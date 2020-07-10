@@ -25,3 +25,58 @@
 .col-sm {
     padding-right: 0px !important;
 }
+.heading
+{
+    margin:6% auto;
+    font-size:32px;
+}
+.btn
+{
+    color: #2f363d;
+    background:#fff;
+    width:150px;
+    height:40px;
+    margin:5% 0% 10% 0%;
+    border:2px solid #fff;
+    font-size:20px;
+}
+.btn:hover
+{
+   opacity: 0.6;
+}
+.form{
+    width:70%;
+    margin: 0 auto;
+}
+.textbox
+{
+    width:100%;
+    margin:5px auto 5px auto;
+    height:30px;
+    border: 2px solid #fff;
+    color:#fff;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 16px;
+    padding-left:10px;
+}
+.is-invalid
+{
+    border: 2px  #ff464d solid !important;
+}
+.grid-col-2
+{
+	display:inline-block;
+	width:36%;
+	margin:2% 32%;
+    vertical-align:top;  
+    background: #2f363d;  /* fallback for old browsers */
+    
+}
+.input
+{
+    margin-bottom: 10px;
+}
+label
+{
+    font-size: 14px;
+}

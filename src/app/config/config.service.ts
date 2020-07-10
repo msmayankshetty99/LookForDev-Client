@@ -93,4 +93,43 @@ export class ConfigService {
          return err;
       }
    }
+
+   addGigs(data) {
+      const token = localStorage.getItem('token');
+      var header = new HttpHeaders({
+         'Authorization': 'Bearer ' + token, 
+         'Content-Type': 'application/json', 
+         'Access-Control-Allow-Origin' :  '*' 
+         });
+         console.log('header passed', header); 
+         try
+         {
+            return this.http.post('http://localhost:5000/private/addGigs', data, {
+               headers: header,
+            }); // SHOULD BE PRIVATE        
+         }
+         catch(err)
+         {
+            return err;
+         }
+      }
+      getCompGigs(data) {
+         const token = localStorage.getItem('token');
+         var header = new HttpHeaders({
+            'Authorization': 'Bearer ' + token, 
+            'Content-Type': 'application/json', 
+            'Access-Control-Allow-Origin' :  '*' 
+            });
+            console.log('header passed', header); 
+            try
+            {
+               return this.http.post('http://localhost:5000/private/getCompGigs', data, {
+                  headers: header,
+               }); // SHOULD BE PRIVATE        
+            }
+            catch(err)
+            {
+               return err;
+            }
+         }
 }

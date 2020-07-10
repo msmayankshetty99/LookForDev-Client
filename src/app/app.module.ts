@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { JwtInterceptor } from './helpers/jwt.interceptor';
@@ -29,6 +30,7 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
     MatTabsModule,
     MatCardModule,
     MatButtonModule,
+    MatSelectModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
