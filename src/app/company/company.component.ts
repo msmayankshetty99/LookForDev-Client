@@ -34,22 +34,20 @@ export class CompanyComponent implements OnInit {
     }
 
     this.api.compDetails(data).subscribe(response => {
-      console.log(response.data.comp);
       this.comp_details = response.data.comp;
       this.comp_name = this.comp_details.comp_name;
       this.comp_des = this.comp_details.des;
       this.comp_id = this.comp_details.id;
-      this.api.getCompGigs(4).subscribe(response => {
-        console.log(response.data.comp);
+      console.log(response.data.comp);
+      var company = { comp_id: this.comp_id }
+      this.api.getCompGigs(company).subscribe(response => {
+        console.log(response);
       }, error => {
         console.log('Error', error);
       })
     }, error => {
       console.log('Error', error);
     })
-
-    
-
   }
   onAddGig() {
     this.gigSubmitted = true;
