@@ -8,7 +8,6 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
   styleUrls: ['./company.component.css']
 })
 export class CompanyComponent implements OnInit {
-
   comp_details: any;
   comp_name: string;
   comp_des: string;
@@ -39,6 +38,7 @@ export class CompanyComponent implements OnInit {
       this.comp_des = this.comp_details.des;
       this.comp_id = this.comp_details.id;
       console.log(response.data.comp);
+
       var company = { comp_id: this.comp_id }
       this.api.getCompGigs(company).subscribe(response => {
         console.log(response);
@@ -49,6 +49,7 @@ export class CompanyComponent implements OnInit {
       console.log('Error', error);
     })
   }
+
   onAddGig() {
     this.gigSubmitted = true;
     var gigdata = {

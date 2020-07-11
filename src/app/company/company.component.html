@@ -100,21 +100,37 @@
                         Required!
                     </span>
                 </div>
+
                 <div class="input">
+                    <label>CATEGORY</label>
+                    <select formControlName="category" class="textbox"
+                        [ngClass]="{'is-invalid': gigSubmitted && gigForm.controls.category.errors}">
+                      <!--<mat-option *ngFor="let food of foods" [value]="food.value">
+                        {{food.viewValue}}
+                      </mat-option>-->
+                        <option value=1>Node.js</option>
+                        <option value=2>Angular</option>
+                        <option value=3>PHP</option>
+                        <option value=4>Android</option>
+                    </select>
+                    <span *ngIf="gigSubmitted && gigForm.controls.category.errors">
+                        Required!
+                    </span>
+                </div>
+
+                <!--<div class="input">
                         <mat-label>CATEGORY</mat-label>
                         <mat-select class = "textbox ">
-                            <!-- <mat-option *ngFor="let food of foods" [value]="food.value">
+                            <mat-option *ngFor="let food of foods" [value]="food.value">
                                 {{food.viewValue}}
                             </mat-option> -->
-                            <mat-option>Node.js</mat-option>
+                            <!--<mat-option>Node.js</mat-option>
                             <mat-option>Angular js</mat-option>
                             <mat-option>PhP</mat-option>
                             <mat-option>Android</mat-option>
-                        </mat-select>
-                    <!-- <span *ngIf="gigSubmitted && gigForm.controls.category.errors">
-                        Required!
-                    </span> -->
-                </div>
+                        </mat-select> -->
+                    <!--  -->
+                <!-- </div> -->
                 <div class="input">
                     <label>BUDGET</label>
                     <input type="text" formControlName="budget" class="textbox"
@@ -206,4 +222,4 @@
     </mat-tab>
 </mat-tab-group>
 <!--<p> {{ comp_name }}</p>
-        <p> {{ comp_des }}</p>-->
+<p> {{ comp_des }}</p>-->
