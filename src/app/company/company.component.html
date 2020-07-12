@@ -103,8 +103,8 @@
 
                 <div class="input">
                     <label>CATEGORY</label>
-                    <select formControlName="category" class="textbox"
-                        [ngClass]="{'is-invalid': gigSubmitted && gigForm.controls.category.errors}">
+                    <select formControlName="category" class="textbox"> 
+                        <!-- [ngClass]="{'is-invalid': gigSubmitted && gigForm.controls.category.errors}" -->
                       <!--<mat-option *ngFor="let food of foods" [value]="food.value">
                         {{food.viewValue}}
                       </mat-option>-->
@@ -113,9 +113,9 @@
                         <option value=3>PHP</option>
                         <option value=4>Android</option>
                     </select>
-                    <span *ngIf="gigSubmitted && gigForm.controls.category.errors">
+                    <!-- <span *ngIf="gigSubmitted && gigForm.controls.category.errors">
                         Required!
-                    </span>
+                    </span> -->
                 </div>
 
                 <!--<div class="input">

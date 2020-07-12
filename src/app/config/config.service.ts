@@ -94,6 +94,27 @@ export class ConfigService {
       }
    }
 
+   devDetails(data) {
+      const token = localStorage.getItem('token');
+      var header = new HttpHeaders({
+         'Authorization': 'Bearer ' + token, 
+         //'Content-Type': 'application/json', 
+         //'Access-Control-Allow-Origin' :  '*' 
+         });
+         console.log('header passed', header); 
+         try
+         {
+            return this.http.post('http://localhost:5000/private/devDetails', data, {
+               headers: header,
+            }); // SHOULD BE PRIVATE        
+         }
+         catch(err)
+         {
+            return err;
+         }
+      }
+   
+
    addGigs(data) {
       const token = localStorage.getItem('token');
       var header = new HttpHeaders({
@@ -132,4 +153,23 @@ export class ConfigService {
                return err;
             }
          }
+         getDevGigs(data) {
+            const token = localStorage.getItem('token');
+            var header = new HttpHeaders({
+               'Authorization': 'Bearer ' + token, 
+               'Content-Type': 'application/json', 
+               'Access-Control-Allow-Origin' :  '*' 
+               });
+               console.log('header passed', header); 
+               try
+               {
+                  return this.http.post('http://localhost:5000/private/getDevGigs', data, {
+                     headers: header,
+                  }); // SHOULD BE PRIVATE        
+               }
+               catch(err)
+               {
+                  return err;
+               }
+            }
 }
