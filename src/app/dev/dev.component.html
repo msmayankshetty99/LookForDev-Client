@@ -1,7 +1,28 @@
 <mat-tab-group dynamicHeight>
     <mat-tab label="View Gigs">
         <div class="mat-card-wrap">
-            <mat-card>
+            <div *ngFor="let gigs of gigs;">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title> {{gigs.title}} </mat-card-title>
+                        <mat-card-subtitle> Category </mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            {{gigs.desc}}
+                        </p>
+                        <p>
+                            Rs. {{gigs.budget}}
+                        </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <div class="d-flex justify-content-end">
+                            <button mat-flat-button> DELETE </button>
+                        </div>
+                    </mat-card-actions>
+                </mat-card>
+            </div> 
+            <!-- <mat-card>
                 <mat-card-header>
                     <mat-card-title> Title </mat-card-title>
                     <mat-card-subtitle> Category </mat-card-subtitle>
@@ -57,26 +78,7 @@
                         <button mat-flat-button> APPLY </button>
                     </div>
                 </mat-card-actions>
-            </mat-card>
-            <mat-card>
-                <mat-card-header>
-                    <mat-card-title> Title </mat-card-title>
-                    <mat-card-subtitle> Category </mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa sapien, mollis sit
-                        amet enim vel, finibus rhoncus orci. Vestibulum eget facilisis dolor, eget ullamcorper quam.
-                        Nulla tincidunt velit et vehicula ullamcorper. Cras non massa quis dui feugiat lacinia nec eget
-                        libero.
-                    </p>
-                </mat-card-content>
-                <mat-card-actions>
-                    <div class="d-flex justify-content-end">
-                        <button mat-flat-button> APPLY </button>
-                    </div>
-                </mat-card-actions>
-            </mat-card>
+            </mat-card> -->
         </div>
     </mat-tab>
     <mat-tab label="Filter Gigs" class="d-flex justify-content-center">
@@ -119,24 +121,14 @@
                         </div>
                         <div class="col-sm">
                             <p>
-                                <b>Resume</b>
-                            </p>
-                            <p>
-                                {{ dev_resume }}
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="row col-sm">
-                        <mat-card-content>
-                            <p>
                                 <b>Achievements</b>
                             </p>
                             <p>
                                 {{ dev_achievement }}
                             </p>
-                        </mat-card-content>
+                        </div>
                     </div>
+                    
                     <div class="row col-sm">
                         <mat-card-content>
                             <br>

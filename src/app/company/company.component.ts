@@ -18,6 +18,7 @@ export class CompanyComponent implements OnInit {
   user_dob: Date;
   user_gender: boolean;
   
+  gigs: any;
   gigForm: FormGroup;
   gigSubmitted = false;
 
@@ -52,7 +53,9 @@ export class CompanyComponent implements OnInit {
 
       var company = { comp_id: this.comp_id }
       this.api.getCompGigs(company).subscribe(response => {
-        console.log(response);
+        //console.log(response);
+        this.gigs = response.data;
+        console.log(this.gigs);
       }, error => {
         console.log('Error', error);
       })

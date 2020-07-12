@@ -29,6 +29,7 @@ export class AuthenticationService {
                 localStorage.setItem('token', user.data.accessToken); // NEVER STRINGIFY
                 console.log(localStorage.getItem('user'));
                 this.userSubject.next(user);
+                //this.router.navigate(['/company']);//
                 return user;
             }));
     }

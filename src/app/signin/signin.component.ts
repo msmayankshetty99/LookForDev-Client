@@ -62,7 +62,6 @@ export class SigninComponent implements OnInit {
       role: this.registerForm.value.role,
       dob: this.registerForm.value.dob,
     }
-
     this.regSubmitted = true;
     console.log('Register button clicked');
     console.log('Value', this.registerForm.value);

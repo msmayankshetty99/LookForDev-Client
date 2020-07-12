@@ -21,6 +21,7 @@ export class DevComponent implements OnInit {
   user_dob: Date;
   user_gender: boolean;
 
+  gigs: any;
   category_id: any;
   constructor(
     private api: ConfigService,
@@ -53,6 +54,7 @@ export class DevComponent implements OnInit {
       var dev = { category_id:this.category_id }
       this.api.getDevGigs(dev).subscribe(response => {
         console.log(response);
+        this.gigs = response.data;
       }, error => {
         console.log('Error', error);
       })

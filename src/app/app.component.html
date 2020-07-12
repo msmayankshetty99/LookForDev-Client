@@ -20,7 +20,8 @@
                 <a href="#" class="nav-item nav-link active">Home</a>
             </div>-->
             <div class="navbar-nav ml-auto">
-                <a href="/signin" class="nav-item nav-link">Login</a>
+                <a href="/signin" *ngIf ="!loggedIn()" class="nav-item nav-link">Login</a>
+                <a (click) ="logout()" *ngIf ="loggedIn()" class="nav-item nav-link">Logout</a>
             </div>
         </div>
       </nav>
