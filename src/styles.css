@@ -22,6 +22,10 @@ a:hover {
     height: 6%;
 } 
 
+.mat-card-header-text {
+    margin: 0 0px !important; 
+}
+
 .mat-tab-label, .mat-tab-link {
     color: #fff;
 }

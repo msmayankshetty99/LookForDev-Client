@@ -12,6 +12,12 @@ export class CompanyComponent implements OnInit {
   comp_name: string;
   comp_des: string;
   comp_id: any;
+
+  user_name: string;
+  user_email: string;
+  user_dob: Date;
+  user_gender: boolean;
+  
   gigForm: FormGroup;
   gigSubmitted = false;
 
@@ -38,6 +44,11 @@ export class CompanyComponent implements OnInit {
       this.comp_des = this.comp_details.des;
       this.comp_id = this.comp_details.id;
       console.log(response.data.comp);
+
+      this.user_name = user.full_name;
+      this.user_email = user.email;
+      this.user_dob = user.dob;
+      this.user_gender = user.gender;
 
       var company = { comp_id: this.comp_id }
       this.api.getCompGigs(company).subscribe(response => {

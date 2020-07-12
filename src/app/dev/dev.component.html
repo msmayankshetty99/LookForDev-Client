@@ -16,7 +16,7 @@
                 </mat-card-content>
                 <mat-card-actions>
                     <div class="d-flex justify-content-end">
-                        <button mat-flat-button> DELETE </button>
+                        <button mat-flat-button> APPLY </button>
                     </div>
                 </mat-card-actions>
             </mat-card>
@@ -35,7 +35,7 @@
                 </mat-card-content>
                 <mat-card-actions>
                     <div class="d-flex justify-content-end">
-                        <button mat-flat-button> DELETE </button>
+                        <button mat-flat-button> APPLY </button>
                     </div>
                 </mat-card-actions>
             </mat-card>
@@ -54,7 +54,7 @@
                 </mat-card-content>
                 <mat-card-actions>
                     <div class="d-flex justify-content-end">
-                        <button mat-flat-button> DELETE </button>
+                        <button mat-flat-button> APPLY </button>
                     </div>
                 </mat-card-actions>
             </mat-card>
@@ -73,7 +73,7 @@
                 </mat-card-content>
                 <mat-card-actions>
                     <div class="d-flex justify-content-end">
-                        <button mat-flat-button> DELETE </button>
+                        <button mat-flat-button> APPLY </button>
                     </div>
                 </mat-card-actions>
             </mat-card>
@@ -93,12 +93,12 @@
                     </div>
                     <div class="row col-sm d-flex justify-content-center">
                         <mat-card-header>
-                            <mat-card-title>Cheems Shibe</mat-card-title>
+                            <mat-card-title>{{ user_name }}</mat-card-title>
                         </mat-card-header>
                     </div>
                     <div class="row col-sm d-flex justify-content-center">
                         <mat-card-header>
-                            <mat-card-subtitle>I love cheemsburger</mat-card-subtitle>
+                            <mat-card-subtitle>{{ dev_des }}</mat-card-subtitle>
                         </mat-card-header>
                     </div>
                     <div class="row col-sm">
@@ -114,7 +114,7 @@
                                 <b>Experience</b>
                             </p>
                             <p>
-                                20 years in making Cheemsburger.
+                                {{ dev_exp }}
                             </p>
                         </div>
                         <div class="col-sm">
@@ -122,7 +122,7 @@
                                 <b>Resume</b>
                             </p>
                             <p>
-                                https://www.google.co.in
+                                {{ dev_resume }}
                             </p>
                         </div>
                     </div>
@@ -133,8 +133,7 @@
                                 <b>Achievements</b>
                             </p>
                             <p>
-                                1) fsdfsdf
-                                2) fdsgssfsfsd
+                                {{ dev_achievement }}
                             </p>
                         </mat-card-content>
                     </div>
@@ -152,7 +151,7 @@
                                 <b>Email</b>
                             </p>
                             <p>
-                                cheems@gmail.com
+                                {{ user_email }}
                             </p>
                         </div>
                         <div class="col-sm">
@@ -160,7 +159,7 @@
                                 <b>Birthday</b>
                             </p>
                             <p>
-                                01/01/2019
+                                {{ user_dob }}
                             </p>
                         </div>
                     </div>
@@ -170,9 +169,8 @@
                             <p>
                                 <b>Gender</b>
                             </p>
-                            <p>
-                                Male Boi
-                            </p>
+                            <div *ngIf="user_gender">Female</div>
+                            <div *ngIf="!user_gender">Male</div>
                         </div>
                     </div>
                     <br>
@@ -188,7 +186,7 @@
                                 <b>LinkedIn</b>
                             </p>
                             <p>
-                                LinkedIn Link
+                                {{ dev_linkedin }}
                             </p>
                         </div>
                         <div class="col-sm">
@@ -196,7 +194,7 @@
                                 <b>Facebook</b>
                             </p>
                             <p>
-                                Facebook Link
+                                {{ dev_facebook }}
                             </p>
                         </div>
                     </div>
@@ -206,7 +204,7 @@
                                 <b>Twitter</b>
                             </p>
                             <p>
-                                Twitter Link
+                                {{ dev_twitter }}
                             </p>
                         </div>
                     </div>
