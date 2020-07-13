@@ -96,13 +96,15 @@
                 </div>
                 <div class="input">
                     <label>DESCRIPTION</label>
-                    <input type="text" formControlName="description" class="textbox"
-                        [ngClass]="{'is-invalid': gigSubmitted && gigForm.controls.description.errors}" />
+                    <textarea formControlName="description" class="textbox" rows="4" style="height: 120px; resize: none;"
+                        [ngClass]="{'is-invalid': gigSubmitted && gigForm.controls.description.errors}">
+                        Enter a description.
+                    </textarea>
                     <span *ngIf="gigSubmitted && gigForm.controls.description.errors">
                         Required!
                     </span>
                 </div>
-
+                
                 <div class="input">
                     <label>CATEGORY</label>
                     <select formControlName="category" class="textbox"> 

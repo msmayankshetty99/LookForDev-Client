@@ -17,6 +17,10 @@ a:hover {
     opacity: 0.8;
 }
 
+.input select option {
+    color: black; 
+}
+
 .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
     background: linear-gradient(to right, #ff416c, #ff4b2b);
     height: 6%;
