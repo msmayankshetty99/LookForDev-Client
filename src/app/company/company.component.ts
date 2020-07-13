@@ -17,11 +17,12 @@ export class CompanyComponent implements OnInit {
   user_email: string;
   user_dob: Date;
   user_gender: boolean;
-  
+
   gigs: any;
   gigForm: FormGroup;
   gigSubmitted = false;
 
+  category: any;
   constructor(
     private api: ConfigService,
     private formBuilder: FormBuilder,
@@ -31,13 +32,21 @@ export class CompanyComponent implements OnInit {
     this.gigForm = this.formBuilder.group({
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      budget: ['', [Validators.required]]
+      budget: ['', [Validators.required]],
+      category:['', [Validators.required]]
     });
 
     const user = JSON.parse(localStorage.getItem('user'));
     const data = {
       user_id: user.id,
     }
+
+    this.api.getCategory().subscribe(response => {
+      console.log(response.data.category);
+      this.category = response.data.category;
+    }, error => {
+      console.log('Error', error);
+    })
 
     this.api.compDetails(data).subscribe(response => {
       this.comp_details = response.data.comp;
@@ -71,6 +80,7 @@ export class CompanyComponent implements OnInit {
       budget: this.gigForm.value.budget,
       desc: this.gigForm.value.description,
       comp_id: this.comp_details.id,
+      category_id:this.gigForm.value.category
     }
     this.api.addGigs(gigdata).subscribe(response => {
       console.log('Response', response);
@@ -79,4 +89,5 @@ export class CompanyComponent implements OnInit {
       console.log('Error', error);
     })
   };
+  
 }

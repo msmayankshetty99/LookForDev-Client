@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigService } from '../config/config.service';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-dev',
@@ -22,9 +23,17 @@ export class DevComponent implements OnInit {
   user_gender: boolean;
 
   gigs: any;
+  filtergigs: any;
   category_id: any;
+  gigForm: FormGroup;
+  gigSubmitted = false;
+  filterapplied = false;
+
+  category: any;
+
   constructor(
     private api: ConfigService,
+    private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +41,16 @@ export class DevComponent implements OnInit {
     const data = {
       user_id: user.id,
     }
+    this.api.getCategory().subscribe(response => {
+      console.log(response.data.category);
+      this.category = response.data.category;
+    }, error => {
+      console.log('Error', error);
+    })
+
+    this.gigForm = this.formBuilder.group({
+      category:['', [Validators.required]],
+    });
 
     this.api.devDetails(data).subscribe(response =>{
       console.log(response);
@@ -49,9 +68,10 @@ export class DevComponent implements OnInit {
       this.user_email = user.email;
       this.user_dob = user.dob;
       this.user_gender = user.gender;
-
       this.category_id = this.dev_details.category_id;
+
       var dev = { category_id:this.category_id }
+
       this.api.getDevGigs(dev).subscribe(response => {
         console.log(response);
         this.gigs = response.data;
@@ -62,4 +82,16 @@ export class DevComponent implements OnInit {
       console.log('Error', error);
     })
   }
+  onFilterGigs()
+    {
+      this.filterapplied= true;
+      var dev = { category_id:this.gigForm.value.category}
+      this.api.getDevGigs(dev).subscribe(response => {
+        console.log(response);
+        this.filtergigs = response.data;
+      }, error => {
+        console.log('Error', error);
+      })
+    }
+  
 }

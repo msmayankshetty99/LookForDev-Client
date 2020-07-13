@@ -18,6 +18,7 @@ export class SigninComponent implements OnInit {
   compForm: FormGroup;
   regSubmitted = false;
   logSubmitted = false;
+  category: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -44,6 +45,7 @@ export class SigninComponent implements OnInit {
         des:['',Validators.required],
         achievement:['',Validators.required],
         experience:['',Validators.required],
+        category:['',Validators.required],
         linkedin:[''],
         facebook:[''],
         twitter:['']
@@ -52,6 +54,13 @@ export class SigninComponent implements OnInit {
       comp_name:['',Validators.required],
       des:['',Validators.required],
     });
+
+    this.api.getCategory().subscribe(response => {
+      console.log(response.data.category);
+      this.category = response.data.category;
+    }, error => {
+      console.log('Error', error);
+    })
   }
   onRegister(){
     var userdata = { 
@@ -65,9 +74,11 @@ export class SigninComponent implements OnInit {
     this.regSubmitted = true;
     console.log('Register button clicked');
     console.log('Value', this.registerForm.value);
+
     //Basic User Registration
     this.api.registerUsers(userdata).subscribe(response => {
-      console.log('Response', response);
+      console.log('Response', response.data);
+      localStorage.setItem('user', JSON.stringify(response.data));
       //Check For Role
       if(response.data.role == "0")
       {
@@ -80,10 +91,13 @@ export class SigninComponent implements OnInit {
           linkedin_link: this.devForm.value.linkedin,
           twitter_link: this.devForm.value.twitter,
           facebook_link: this.devForm.value.facebook,
+          category_id: this.devForm.value.category,
         }
         this.api.registerDev(devdata).subscribe(response => {
           console.log('Response', response);
           alert('Successfully Registered!');
+          localStorage.setItem('token', response.data.accessToken);
+          this.router.navigate(['/dev']);
         }, error => {
           console.log('Error', error);
           alert('Error Encountered. Please try again.');
@@ -100,6 +114,8 @@ export class SigninComponent implements OnInit {
         this.api.registerComp(compdata).subscribe(response => {
           console.log('Response', response);
           alert('Successfully Registered!');
+          localStorage.setItem('token', response.data.accessToken);
+          this.router.navigate(['/company']);
         }, error => {
           console.log('Error', error);
           alert('Error Encountered. Please try again.');

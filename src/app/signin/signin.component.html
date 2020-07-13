@@ -73,6 +73,17 @@
                     <div *ngIf="registerForm.controls.role.value == '0'">
                         <!-- <p> Dev form displayed </p> -->
                         <form [formGroup] = "devForm">
+                            <div class="input">
+                                <label>CATEGORY</label>
+                                <select formControlName="category" class="textbox" [ngClass]="{'is-invalid': regSubmitted && devForm.controls.category.errors}"> 
+                                  <option *ngFor="let category of category" [value]="category.id">
+                                    {{category.name}}
+                                  </option>
+                                </select>
+                                <span *ngIf="regSubmitted && devForm.controls.category.errors">
+                                    Required!
+                                </span>
+                            </div>
                             <div class = "input">
                                 <label>DESCRIPTION</label>
                                 <input type = "text" class = "textbox" formControlName = "des" [ngClass]="{'is-invalid': regSubmitted && devForm.controls.des.errors}"/>

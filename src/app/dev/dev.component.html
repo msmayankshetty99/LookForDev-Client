@@ -5,7 +5,7 @@
                 <mat-card>
                     <mat-card-header>
                         <mat-card-title> {{gigs.title}} </mat-card-title>
-                        <mat-card-subtitle> Category </mat-card-subtitle>
+                        <!-- <mat-card-subtitle> Category </mat-card-subtitle> -->
                     </mat-card-header>
                     <mat-card-content>
                         <p>
@@ -21,7 +21,7 @@
                         </div>
                     </mat-card-actions>
                 </mat-card>
-            </div> 
+            </div>
             <!-- <mat-card>
                 <mat-card-header>
                     <mat-card-title> Title </mat-card-title>
@@ -82,6 +82,49 @@
         </div>
     </mat-tab>
     <mat-tab label="Filter Gigs" class="d-flex justify-content-center">
+        <div class="mat-card">
+            <p class="heading" align="center">Filter Gigs</p>
+            <form [formGroup]="gigForm" class="form">
+                <div class="input">
+                    <label>CATEGORY</label>
+                    <select formControlName="category" class="textbox"
+                        [ngClass]="{'is-invalid': gigSubmitted && gigForm.controls.category.errors}">
+                        <option *ngFor="let category of category" [value]="category.id">
+                            {{category.name}}
+                        </option>
+                    </select>
+                    <span *ngIf="gigSubmitted && gigForm.controls.category.errors">
+                        Required!
+                    </span>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button (click)="onFilterGigs()" class="btn">SHOW GIG</button>
+                </div>
+            </form>
+        </div>
+        <div class="mat-card-wrap" *ngIf="filterapplied">
+            <div *ngFor="let filtergigs of filtergigs;">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title> {{filtergigs.title}} </mat-card-title>
+                        <!-- <mat-card-subtitle> Category </mat-card-subtitle> -->
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            {{filtergigs.desc}}
+                        </p>
+                        <p>
+                            Rs. {{filtergigs.budget}}
+                        </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <div class="d-flex justify-content-end">
+                            <button mat-flat-button> APPLY </button>
+                        </div>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
     </mat-tab>
     <mat-tab label="Profile" class="d-flex justify-content-center">
         <div class="mat-card-wrap">
@@ -91,7 +134,8 @@
                     <div class="row col-sm d-flex justify-content-center">
                         <img mat-card-image
                             src="https://scontent.fbom16-1.fna.fbcdn.net/v/t1.0-9/80058003_102924364554021_5949304830592811008_n.jpg?_nc_cat=106&_nc_sid=85a577&_nc_ohc=wdNTJwYxtV4AX_zueSC&_nc_ht=scontent.fbom16-1.fna&oh=3509d31a1f99d1b20e2d48e963d50221&oe=5F2DB50D"
-                            class="img-fluid rounded-circle" alt="Photo of a Shiba Inu" style="width: 30%; height: auto;">
+                            class="img-fluid rounded-circle" alt="Photo of a Shiba Inu"
+                            style="width: 30%; height: auto;">
                     </div>
                     <div class="row col-sm d-flex justify-content-center">
                         <mat-card-header>
@@ -128,7 +172,7 @@
                             </p>
                         </div>
                     </div>
-                    
+
                     <div class="row col-sm">
                         <mat-card-content>
                             <br>

@@ -172,4 +172,19 @@ export class ConfigService {
                   return err;
                }
             }
+            getCategory() {
+               var header = new HttpHeaders({
+                  'Content-Type': 'application/json', 
+                  'Access-Control-Allow-Origin' :  '*' }
+                  );
+                  try
+                  {
+                     return this.http.get('http://localhost:5000/public/getCategories');
+                  }
+                  catch(err)
+                  {
+                     return err;
+                  }
+             }
+            
 }

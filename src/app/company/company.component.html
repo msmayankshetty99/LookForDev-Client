@@ -5,7 +5,7 @@
                 <mat-card>
                     <mat-card-header>
                         <mat-card-title> {{gigs.title}} </mat-card-title>
-                        <mat-card-subtitle> Category </mat-card-subtitle>
+                        <!-- <mat-card-subtitle> Category </mat-card-subtitle> -->
                     </mat-card-header>
                     <mat-card-content>
                         <p>
@@ -107,34 +107,15 @@
                 
                 <div class="input">
                     <label>CATEGORY</label>
-                    <select formControlName="category" class="textbox"> 
-                        <!-- [ngClass]="{'is-invalid': gigSubmitted && gigForm.controls.category.errors}" -->
-                      <!--<mat-option *ngFor="let food of foods" [value]="food.value">
-                        {{food.viewValue}}
-                      </mat-option>-->
-                        <option value=1>Node.js</option>
-                        <option value=2>Angular</option>
-                        <option value=3>PHP</option>
-                        <option value=4>Android</option>
+                    <select formControlName="category" class="textbox" [ngClass]="{'is-invalid': gigSubmitted && gigForm.controls.category.errors}"> 
+                      <option *ngFor="let category of category" [value]="category.id">
+                        {{category.name}}
+                      </option>
                     </select>
-                    <!-- <span *ngIf="gigSubmitted && gigForm.controls.category.errors">
+                    <span *ngIf="gigSubmitted && gigForm.controls.category.errors">
                         Required!
-                    </span> -->
+                    </span>
                 </div>
-
-                <!--<div class="input">
-                        <mat-label>CATEGORY</mat-label>
-                        <mat-select class = "textbox ">
-                            <mat-option *ngFor="let food of foods" [value]="food.value">
-                                {{food.viewValue}}
-                            </mat-option> -->
-                            <!--<mat-option>Node.js</mat-option>
-                            <mat-option>Angular js</mat-option>
-                            <mat-option>PhP</mat-option>
-                            <mat-option>Android</mat-option>
-                        </mat-select> -->
-                    <!--  -->
-                <!-- </div> -->
                 <div class="input">
                     <label>BUDGET</label>
                     <input type="text" formControlName="budget" class="textbox"
